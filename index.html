@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app" v-cloak>
+       
+        <nav-list></nav-list>
+        
+    </div>
+    
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        
+        const app = Vue.createApp({
+            data(){
+                return{
+                    
+                    
+
+                }
+            },
+            
+        })
+        app.component('nav-list',{
+            template:`
+                <h1>{{title}}</h1>
+                <img src="../img/photo.jpg" class="img" alt="" />
+                <h3 class="text">{{text}}</h3>
+                <login-form></login-form>
+                <h3 class="textTwo">{{textTwo}}</h3>
+                <button class="btn" @click="accBtn"><i class="fas fa-arrow-right">Create new account</i></button>
+                
+
+            `,
+            data(){
+                return{
+                    text:'Share your journey and join our Sonic community',
+                    textTwo:"Don't have account?",
+                    title:'SonicPhotography'
+                    
+                }
+            },
+            methods:{
+                accBtn(){
+                    alert('Welcome to SonicPhotography' )
+                }
+
+            }
+
+        })
+        app.component('login-form',{
+            template:`
+                <form>
+                    <login-input type="email" :label="emailText" class="email"/><br>
+                    <login-input type="password" v-model="password" :label="passwordText" class="password"/>
+                    <button class="loginBtn" @click="logBtn" >Login </button>
+                    
+                </form>
+            `,
+            data(){
+                return{
+                    email:'',
+                    password:'',
+                    emailText:'Email',
+                    passwordText:'Password',
+                }
+            },
+            methods:{
+                logBtn(){
+                    alert('You are logged in')
+                  
+                }
+            }
+            
+            
+        })
+
+        app.component('login-input',{
+            template:`
+                <label>
+                    {{label}}
+                    <input type="text" >
+                </label>
+            `,
+            props:['label']
+           
+        })
+        
+
+        
+
+        app.mount('#app')
+        
+
+        
+ 
+        
+    </script>
+    <style>
+        body{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+            background-color: rgba(26, 26, 26, 0.959);
+        }
+        h1{
+            color: gray;
+            margin-left: 60%;
+        }
+        .img{
+            margin-top: -5%;
+            width: 650px;
+            height: 600px;
+        }
+        .text{
+            margin-top: -30%;
+            margin-left: 60%;
+            color: gray;
+        }
+        
+        input{
+            margin-top: 10px;
+            margin-left: 60%;
+            display: flex;
+            width: 380px;
+            padding: 6px;
+
+        }
+        .loginBtn{
+            margin-top: 10px;
+            margin-left: 60%;
+            cursor: pointer;
+            background-color: transparent;
+            color: gray;
+            width: 396px;
+        }
+        .email{
+            color: gray;
+            margin-left: 60%;
+        }
+        .password{
+            color: gray;
+            margin-left:60% ;
+        }
+        .textTwo{
+            margin-left: 60%;
+            color: gray;
+        }
+        i{
+            color: gray;
+        }
+        .btn{
+            background-color: transparent;
+            margin-left: 60%;
+            width: 396px;
+        }
+        [v-cloak]{
+            display: none;
+        }
+        
+    
+       
+        
+        
+    </style>
+</body>
+</html>
